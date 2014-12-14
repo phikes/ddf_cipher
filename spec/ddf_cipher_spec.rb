@@ -23,7 +23,7 @@ module DdfCipher
         expect(cipher.encrypt).to eq ':-):-));-):-):-));-)'
       end
 
-      it 'keeps characters which can not be replaced' do
+      it 'keeps characters which can not be encrypted' do
         cipher = Cipher.new strange_string
         expect(cipher.encrypt).to eq ':-):-));-) !23'
       end
