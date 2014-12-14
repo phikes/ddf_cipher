@@ -28,5 +28,14 @@ module DdfCipher
         expect(cipher.encrypt).to eq ':-):-));-) !23'
       end
     end
+
+    context 'upon decryption' do
+      let(:replacable_string) { ':-):-));-)' }
+
+      it 'correctly decodes a string composed of replacable substrings' do
+        cipher = Cipher.new replacable_string
+        expect(cipher.decrypt).to eq 'abc'
+      end
+    end
   end
 end
