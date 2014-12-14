@@ -31,10 +31,16 @@ module DdfCipher
 
     context 'upon decryption' do
       let(:replacable_string) { ':-):-));-)' }
+      let(:mixed_string) { 'ab c :-):-));-)' }
 
       it 'correctly decodes a string composed of replacable substrings' do
         cipher = Cipher.new replacable_string
         expect(cipher.decrypt).to eq 'abc'
+      end
+
+      it 'keeps substrings which can not be decrypted' do
+        cipher = Cipher.new mixed_string
+        expect(cipher.decrypt).to eq 'ab c abc'
       end
     end
   end
